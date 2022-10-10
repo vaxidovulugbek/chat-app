@@ -1,10 +1,11 @@
 import './App.css';
+import ChatWindow from './components/chatWindow/ChatWindow';
 
 function App() {
   return (
     <div className="App">
-      <div className='app1'></div>
-      <div className='app2'></div>
+        <div>dasdsa</div>
+      <ChatWindow />
     </div>
   );
 }

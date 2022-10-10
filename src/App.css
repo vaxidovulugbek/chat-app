@@ -1,19 +1,24 @@
-*{
+* {
   margin: 0;
-  padding: 0; 
+  padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --chatwindowHeaderBackground: #eeeeee;
+  --chatWindowHeaderTextName: #254687;
+  --chatWindowHeaderTextLastSeen: #707565;
+  --chatWindowHeaderIconsColor: #6c7883;
+  --chatWindowMessageSeenColor: #a3acb8;
+  --chatWindowHeaderBorderBottomColor: #d8d8d8;
+  --chatWindowHeaderScrollBackgroundColor: #2e343c50;
+  --chatWindowHeaderScrollColor: #2e343cd8;
+  --chatwindowTextFieldBackground: #eeeeee;
+  --chatwindowTextFieldBorderColor: #d8d8d8;
+}
+
 .App {
   display: flex;
+  justify-content: space-between;
   box-sizing: border-box;
-}
-.app1 {
-  width: 30%;
-  height: 100vh;
-  border: 1px solid red;
-}
-.app2 {
-  width: 70%;
-  height: 100vh;
-  border: 1px solid #4d17b9;
 }

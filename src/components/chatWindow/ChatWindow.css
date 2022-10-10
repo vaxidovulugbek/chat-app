@@ -1,0 +1,204 @@
+.ChatWindow {
+  width: 70%;
+  height: 100vh;
+  border-left: 1px solid var(--chatWindowHeaderIconsColor);
+}
+
+.ChatWindow-header {
+  width: 100%;
+  height: 65px;
+  background-color: var(--chatwindowHeaderBackground);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.ChatWindow-header-userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.ChatWindow-header-userImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: 0.5s;
+  transform-origin: center center;
+}
+
+.ChatWindow-header-userImage img {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+
+.ChatWindow-header-userImage--focus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  /* transform: scale(); */
+  background-color: rgba(128, 128, 128, 0.671);
+  border-radius: 0 !important;
+}
+
+.ChatWindow-header-userImage--focus img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.ChatWindow-header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ChatWindow-header-text__userName {
+  color: var(--chatWindowHeaderTextName);
+  font-size: 18px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.ChatWindow-header-text__lastSeen {
+  color: var(--chatWindowHeaderTextLastSeen);
+  font-size: 14px;
+  font-weight: 500;
+  user-select: none;
+}
+
+.ChatWindow-header-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ChatWindow-header-icons__dots {
+  cursor: pointer;
+  font-size: 27px;
+  color: var(--chatWindowHeaderIconsColor);
+}
+.ChatWindow-header-icons__search {
+  cursor: pointer;
+  font-size: 27px;
+  padding: 2px;
+  color: var(--chatWindowHeaderIconsColor);
+}
+
+.ChatWindow-messages {
+  width: 100%;
+  height: 83vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+  background-image: url("https://static-cse.canva.com/blob/572026/removingbackgroundimages_Unsplash.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 5px;
+}
+.ChatWindow-messages::-webkit-scrollbar {
+  width: 7px;
+  background-color: var(--chatWindowHeaderScrollBackgroundColor);
+  border-radius: 5px;
+}
+.ChatWindow-messages::-webkit-scrollbar-thumb {
+  background-color: var(--chatWindowHeaderScrollColor);
+  border-radius: 10px;
+}
+
+.ChatWindow-messages__message {
+  width: 100%;
+}
+
+.meSent {
+  display: flex;
+  justify-content: flex-end !important;
+}
+
+.meSent .ChatWindow-messages__message--see {
+  background-color: #ffebee;
+  border-radius: 15px 15px 0px 15px !important;
+}
+
+.ChatWindow-messages__message--see {
+  min-width: 30%;
+  max-width: 70%;
+  display: inline-block;
+  background-color: #ffffff;
+  padding: 10px;
+  padding-bottom: 15px;
+  position: relative;
+  border-radius: 15px 15px 15px 0;
+}
+
+.ChatWindow-messages__message--context {
+  padding-bottom: 3px;
+  pad: 10px;
+  white-space: unset;
+}
+
+.ChatWindow-messages__message--info {
+  width: 70px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+}
+
+.ChatWindow-messages__message--infoSeen {
+  display: flex;
+  align-items: flex-end;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--chatWindowMessageSeenColor);
+}
+
+.ChatWindow-messages__message--infoTime {
+  font-size: 13px;
+  color: var(--chatWindowMessageSeenColor);
+}
+
+.ChatWindow-textFeild {
+  height: 55px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-top: 1px solid var(--chatwindowTextFieldBorderColor);
+  background-color: var(--chatwindowTextFieldBackground);
+}
+
+.ChatWindow-textFeild__input {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  line-height: 100%;
+  padding-left: 15px;
+  background-color: transparent;
+  /* color: ; */
+}
