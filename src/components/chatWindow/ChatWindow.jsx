@@ -11,6 +11,7 @@ import { useRef, useState } from "react";
 
 function ChatWindow() {
   let textFieldFocus = useRef(null);
+  let MessageRightClick = useRef(null);
   let chatsObj = {
     sent: [
       {
@@ -193,7 +194,10 @@ function ChatWindow() {
       {
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
-        isedited: [true, "hello world"],
+        isedited: [
+          true,
+          "hello sadasdasdasd asdasd sds sdassa asds dsd asd asdas dassdasdasdas asd asd asd asd a sd asdworld",
+        ],
         seen: false,
         isPinned: true,
         me: true,
@@ -201,12 +205,18 @@ function ChatWindow() {
     ],
   };
 
-  let rightClick = (e) => {};
+  let rightClickToMessage = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
+  let rightClickToMessageLine = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
 
-  window.addEventListener("click", () => {
-    textFieldFocus.current.focus();
-    // console.log(textFieldFocus.current.focus());
-  });
+  // window.addEventListener("click", () => {
+  //   textFieldFocus.current.focus;
+  // });
 
   let [addClass, setAddClass] = useState(false);
   let focusImage = () => {
@@ -255,16 +265,21 @@ function ChatWindow() {
         {chatsObj.sent.map((el, i) => {
           return (
             <div
+              onContextMenu={rightClickToMessageLine}
               key={i}
               className={`ChatWindow-messages__message ${
                 el.me == true ? "meSent" : ""
               }`}
             >
               <div
-                onClick={rightClick}
+                onContextMenu={rightClickToMessage}
+                ref={MessageRightClick}
                 className="ChatWindow-messages__message--see"
               >
-                <p className="ChatWindow-messages__message--context">
+                <p
+                  onselectstart={(e) => console.log(e)}
+                  className="ChatWindow-messages__message--context"
+                >
                   {el.isedited[0] != true
                     ? el.message
                     : el.isedited[el.isedited.length - 1]}

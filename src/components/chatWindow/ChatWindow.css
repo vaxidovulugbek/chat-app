@@ -48,7 +48,7 @@
   height: 100%;
   width: 100%;
   z-index: 1;
-  /* transform: scale(); */
+  user-zoom: 100;
   background-color: rgba(128, 128, 128, 0.671);
   border-radius: 0 !important;
 }
@@ -164,6 +164,10 @@
   position: absolute;
   right: 10px;
   bottom: 0px;
+}
+
+.ChatWindow-messages__message--info:active {
+  background-color: transparent;
 }
 
 .ChatWindow-messages__message--infoSeen {
