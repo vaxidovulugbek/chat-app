@@ -1,6 +1,7 @@
 import "./ChatWindow.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { TiTick } from "react-icons/ti";
+
+import { BsPinAngle } from "react-icons/bs";
 import { MdDone } from "react-icons/md";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { IoMdImages } from "react-icons/io";
@@ -12,17 +13,20 @@ import { useRef, useState } from "react";
 function ChatWindow() {
   let textFieldFocus = useRef(null);
   let MessageRightClick = useRef(null);
+  let ChatWindow_messages = useRef(null);
   let chatsObj = {
     sent: [
       {
+        id: 1,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 2,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -31,14 +35,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 3,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 4,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -47,14 +53,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 5,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 6,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -63,14 +71,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 7,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 8,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -79,14 +89,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 9,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 10,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -95,14 +107,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 11,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 12,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -111,14 +125,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 13,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 14,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -127,14 +143,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 15,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
-        isedited: [true, "hello world"],
+        isedited: [true, "hello world 13"],
         seen: true,
         isPinned: true,
         me: false,
       },
       {
+        id: 16,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -143,14 +161,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 17,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 18,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -159,14 +179,16 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 19,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
       {
+        id: 20,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -175,15 +197,17 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 21,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
         seen: true,
-        isPinned: true,
+        isPinned: false,
         me: false,
       },
 
       {
+        id: 22,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [true, "hello world"],
@@ -192,6 +216,7 @@ function ChatWindow() {
         me: true,
       },
       {
+        id: 23,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
         isedited: [
@@ -199,7 +224,7 @@ function ChatWindow() {
           "hello sadasdasdasd asdasd sds sdassa asds dsd asd asdas dassdasdasdas asd asd asd asd a sd asdworld",
         ],
         seen: false,
-        isPinned: true,
+        isPinned: false,
         me: true,
       },
     ],
@@ -221,6 +246,14 @@ function ChatWindow() {
   let [addClass, setAddClass] = useState(false);
   let focusImage = () => {
     setAddClass(!addClass);
+  };
+
+  let [is_shot_inned_message, setIs_shot_inned_message] = useState(false);
+  let show_pinned_message = (id) => {
+    setIs_shot_inned_message(id);
+    setTimeout(() => {
+      setIs_shot_inned_message(false);
+    }, 2000);
   };
 
   return (
@@ -258,17 +291,42 @@ function ChatWindow() {
       </div>
 
       {/* chat window pins panel*/}
-      <div className="ChatWindow-pins"></div>
+      <div className="ChatWindow-pins">
+        {chatsObj.sent.map((el) => {
+          if (el.isPinned == true) {
+            return (
+              <a
+                href={`#el${el.id}`}
+                key={el.id}
+                className="ChatWindow-pins__pin"
+                onClick={() => show_pinned_message(el.id)}
+              >
+                <p>
+                  {el.isedited[0] == true
+                    ? el.isedited[el.isedited.length - 1]
+                    : el.message}
+                </p>
+                <BsPinAngle className="ChatWindow-pins__pin--icon" />
+              </a>
+            );
+          }
+        })}
+      </div>
 
       {/* chat window body */}
-      <div className="ChatWindow-messages">
+      <div ref={ChatWindow_messages} className="ChatWindow-messages">
         {chatsObj.sent.map((el, i) => {
           return (
             <div
               onContextMenu={rightClickToMessageLine}
               key={i}
+              id={`el${el.id}`}
               className={`ChatWindow-messages__message ${
                 el.me == true ? "meSent" : ""
+              }  ${
+                is_shot_inned_message == el.id
+                  ? "ChatWindow-pins__pin--show"
+                  : ""
               }`}
             >
               <div
@@ -277,7 +335,7 @@ function ChatWindow() {
                 className="ChatWindow-messages__message--see"
               >
                 <p
-                  onselectstart={(e) => console.log(e)}
+                  // onselectstart={(e) => console.log(e)}
                   className="ChatWindow-messages__message--context"
                 >
                   {el.isedited[0] != true
