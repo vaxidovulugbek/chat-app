@@ -1,18 +1,19 @@
 import "./ChatWindow.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-import { BsPinAngle } from "react-icons/bs";
+import { BsPinAngle, BsEmojiSmile } from "react-icons/bs";
 import { MdDone } from "react-icons/md";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { IoMdImages } from "react-icons/io";
 import { IoSearch, IoCheckmarkDoneOutline } from "react-icons/io5";
 import IconButton from "@mui/material/IconButton";
 import { hover } from "@testing-library/user-event/dist/hover";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function ChatWindow() {
   let textFieldFocus = useRef(null);
   let MessageRightClick = useRef(null);
+
   let ChatWindow_messages = useRef(null);
   let chatsObj = {
     sent: [
@@ -20,7 +21,7 @@ function ChatWindow() {
         id: 1,
         message: "hello",
         time: ["10:05", "AM", "10.10.2022"],
-        isedited: [true, "hello world"],
+        isedited: [true, "hello world 15"],
         seen: true,
         isPinned: false,
         me: false,
@@ -256,6 +257,22 @@ function ChatWindow() {
     }, 2000);
   };
 
+  //  text send button animation
+  let send_message_icon_path = useRef(null);
+  let send_message_icon = useRef(null);
+
+  // state to check if all are  empty. it should be true.
+  let [isNotEmptyAnimated, setIsNotAnimated] = useState(false);
+
+  // input change event
+  let send_message = (e) => {
+    if (e.target.value.length > 0) {
+      setIsNotAnimated(true);
+    } else {
+      setIsNotAnimated(false);
+    }
+  };
+
   return (
     // chat window
     <div className="ChatWindow">
@@ -361,20 +378,18 @@ function ChatWindow() {
 
       {/* chat window textfield */}
       <div className="ChatWindow-textFeild">
-        <IconButton
-          sx={{
-            width: 50,
-            height: 50,
-            borderRadius: 0,
-            color: "success.main",
-          }}
-          aria-label="delete"
-          disabled
-          color="primary"
-        >
-          <IoMdImages />
-        </IconButton>
+        {isNotEmptyAnimated == true ? (
+          <label className="ChatWindow-textFeild-fileSend">
+            <BsEmojiSmile />
+          </label>
+        ) : (
+          <label htmlFor="sendFile" className="ChatWindow-textFeild-fileSend">
+            <IoMdImages />
+          </label>
+        )}
+        <input type="file" style={{ display: "none" }} id="sendFile" />
         <input
+          onKeyUp={() => send_message(event)}
           ref={textFieldFocus}
           type="text"
           placeholder="text here..."
@@ -384,13 +399,80 @@ function ChatWindow() {
           aria-label="delete"
           color="primary"
           sx={{
-            width: 100,
-            height: 55,
-            borderRadius: 0,
-            color: "success.main",
+            width: 50,
+            height: 50,
+            borderRadius: 50,
+            color: "#3390EC",
+            background: "#fff",
+            marginLeft: "8px",
           }}
         >
-          <RiSendPlaneFill />
+          <svg
+            id="send_messsage_icon"
+            width="25"
+            height="25"
+            viewBox="0 0 215 205"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={
+              isNotEmptyAnimated == true
+                ? { animationName: "fill" }
+                : { animationName: "" }
+            }
+          >
+            <g filter="url(#filter0_d_4_14)">
+              <path
+                style={
+                  isNotEmptyAnimated == true
+                    ? { animationName: "pop" }
+                    : { animationName: "" }
+                }
+                ref={send_message_icon_path}
+                className="send_messsage_icon_path"
+                d="M3.70945 61.6138L203.33 2.97726L113.754 190.563L88.2388 106.489C87.8845 105.322 87.0713 104.348 85.9856 103.791L3.70945 61.6138Z"
+                stroke="#3390ec"
+                strokeWidth="5"
+                shapeRendering="crispEdges"
+              />
+            </g>
+            <defs>
+              <filter
+                id="filter0_d_4_14"
+                x="0.366089"
+                y="0.178116"
+                width="213.904"
+                height="204.763"
+                filterUnits="userSpaceOnUse"
+                colorInterpolationFilters="sRGB"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dx="4" dy="7" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_4_14"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_4_14"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
         </IconButton>
       </div>
     </div>
