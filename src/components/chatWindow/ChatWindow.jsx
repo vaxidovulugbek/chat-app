@@ -9,6 +9,7 @@ import { IoSearch, IoCheckmarkDoneOutline } from "react-icons/io5";
 import IconButton from "@mui/material/IconButton";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { useEffect, useRef, useState } from "react";
+import Imoji from "./imojis/Imoji";
 
 function ChatWindow() {
   let textFieldFocus = useRef(null);
@@ -375,7 +376,6 @@ function ChatWindow() {
           );
         })}
       </div>
-
       {/* chat window textfield */}
       <div className="ChatWindow-textFeild">
         {isNotEmptyAnimated == true ? (

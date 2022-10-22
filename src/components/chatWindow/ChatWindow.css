@@ -51,8 +51,10 @@
   width: 100%;
   z-index: 1;
   user-zoom: 100;
-  background-color: rgba(128, 128, 128, 0.671);
   border-radius: 0 !important;
+  background-color: rgba(0, 0, 0, 0.53);
+}
+.ChatWindow-header-userImage--focus::backdrop {
 }
 
 .ChatWindow-header-userImage--focus img {
