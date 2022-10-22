@@ -1,0 +1,7 @@
+.imoji-container {
+  position: absolute;
+  max-width: 400px;
+  max-height: 500px;
+  left: 100px;
+  background-color: red;
+}
