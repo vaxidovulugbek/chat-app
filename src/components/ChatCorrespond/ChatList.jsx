@@ -24,10 +24,20 @@ function ChatList() {
   let searchingHendler = (event) => {
     setValue(event.target.value)
   }
+  // const toggle = document.querySelector(".toggle");
+  // const hours = new Date().getHours();
+  // toggle.checked = hours > 7 && hours < 20;
+  // const darkLiteHendler = () => {
+  //   const hours = new Date().getHours();
+  //   toggle.checked = hours > 7 && hours < 20;
+  // }
   return (
     <div className='ChatList'>
         <div className='ChatList__header'>
-          <Button className='ChatList__header-menu'><HiOutlineMenuAlt2/></Button>
+          {/* <Button className='ChatList__header-menu'><HiOutlineMenuAlt2/></Button> */}
+          <input id="toggle" className="toggle " type="checkbox"  />
+          <div className="background"></div>
+          
           <div className='ChatList__header-searching'>
             <BiSearchAlt  className='ChatList__header-icon'/>
             <input className='ChatList__header-search' type="search" placeholder='Search...' onChange={(e) => searchingHendler(e)} />
