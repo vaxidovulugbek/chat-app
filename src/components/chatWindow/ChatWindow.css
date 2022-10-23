@@ -101,55 +101,6 @@
   color: var(--chatWindowHeaderIconsColor);
 }
 
-/* here pins */
-
-.ChatWindow-pins {
-  width: 100%;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 20px;
-}
-
-.ChatWindow-pins__pin {
-  display: inline-block;
-  width: 100%;
-  text-decoration: none;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 16px;
-}
-
-.ChatWindow-pins__pin--icon {
-  font-size: 20px;
-}
-
-.ChatWindow-pins__pin--show {
-  transition: 2s;
-  background-color: rgba(117, 26, 196, 0.728) !important;
-}
-.ChatWindow-pins__pin--show .ChatWindow-messages__message--see {
-  animation-name: popUpPinedMessage;
-  animation-duration: 2s;
-  animation-iteration-count: 1;
-}
-
-@keyframes popUpPinedMessage {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(10deg);
-  }
-
-  70% {
-    transform: rotate(0deg);
-  }
-}
-
 /* here messages styles */
 
 .ChatWindow-messages {
