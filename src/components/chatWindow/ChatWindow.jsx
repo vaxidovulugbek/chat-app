@@ -9,8 +9,9 @@ import { IoSearch, IoCheckmarkDoneOutline } from "react-icons/io5";
 import IconButton from "@mui/material/IconButton";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { useEffect, useRef, useState } from "react";
-import Imoji from "./imojis/Imoji";
+// import Imoji from "./imojis/Imoji";
 import Pins from "./pins/Pins";
+// import Imoji from "./imojis/Imoji";
 
 function ChatWindow() {
   let textFieldFocus = useRef(null);
@@ -369,7 +370,7 @@ function ChatWindow() {
         )}
         <input type="file" style={{ display: "none" }} id="sendFile" />
         <input
-          onKeyUp={() => send_message(event)}
+          onKeyUp={(event) => send_message(event)}
           ref={textFieldFocus}
           type="text"
           placeholder="text here..."
