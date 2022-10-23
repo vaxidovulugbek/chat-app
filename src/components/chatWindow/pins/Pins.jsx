@@ -35,6 +35,10 @@ function Pins({ chatsObj, setChatObj, setIs_show_pinned_message }) {
               className="ChatWindow-pins__pin"
               onClick={() => show_pinned_message(el.id)}
             >
+              <BsPinAngle
+                onClick={() => UnPin(el)}
+                className="ChatWindow-pins__remove-pin"
+              />
               <p>
                 {el.isedited[0] == true
                   ? el.isedited[el.isedited.length - 1]

@@ -3,14 +3,18 @@
 .ChatWindow-pins {
   width: 100%;
   height: 35px;
+  top: 65px;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0 20px;
+  background-color: rgba(87, 88, 86, 0.986);
+  z-index: 1;
 }
 
 .ChatWindow-pins:hover {
-  background-color: rgba(211, 211, 211, 0.233);
+  background-color: rgba(49, 45, 45, 0.842);
 }
 
 .ChatWindow-pins__pin {

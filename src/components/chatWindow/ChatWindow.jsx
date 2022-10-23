@@ -239,7 +239,7 @@ function ChatWindow() {
   };
   let rightClickToMessageLine = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    console.log(e.view.screen.height);
   };
 
   // window.addEventListener("click", () => {
