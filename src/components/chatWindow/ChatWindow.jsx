@@ -10,13 +10,15 @@ import IconButton from "@mui/material/IconButton";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { useEffect, useRef, useState } from "react";
 // import Imoji from "./imojis/Imoji";
+import Pins from "./pins/Pins";
+// import Imoji from "./imojis/Imoji";
 
 function ChatWindow() {
   let textFieldFocus = useRef(null);
   let MessageRightClick = useRef(null);
 
   let ChatWindow_messages = useRef(null);
-  let chatsObj = {
+  let [chatsObj, setChatObj] = useState({
     sent: [
       {
         id: 1,
@@ -230,7 +232,7 @@ function ChatWindow() {
         me: true,
       },
     ],
-  };
+  });
 
   let rightClickToMessage = (e) => {
     e.preventDefault();
@@ -238,7 +240,7 @@ function ChatWindow() {
   };
   let rightClickToMessageLine = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    console.log(e.view.screen.height);
   };
 
   // window.addEventListener("click", () => {
@@ -250,13 +252,7 @@ function ChatWindow() {
     setAddClass(!addClass);
   };
 
-  let [is_shot_inned_message, setIs_shot_inned_message] = useState(false);
-  let show_pinned_message = (id) => {
-    setIs_shot_inned_message(id);
-    setTimeout(() => {
-      setIs_shot_inned_message(false);
-    }, 2000);
-  };
+  let [is_show_pinned_message, setIs_show_pinned_message] = useState(false);
 
   //  text send button animation
   let send_message_icon_path = useRef(null);
@@ -308,28 +304,12 @@ function ChatWindow() {
         </div>
       </div>
 
-      {/* chat window pins panel*/}
-      <div className="ChatWindow-pins">
-        {chatsObj.sent.map((el) => {
-          if (el.isPinned == true) {
-            return (
-              <a
-                href={`#el${el.id}`}
-                key={el.id}
-                className="ChatWindow-pins__pin"
-                onClick={() => show_pinned_message(el.id)}
-              >
-                <p>
-                  {el.isedited[0] == true
-                    ? el.isedited[el.isedited.length - 1]
-                    : el.message}
-                </p>
-                <BsPinAngle className="ChatWindow-pins__pin--icon" />
-              </a>
-            );
-          }
-        })}
-      </div>
+      {/* chatWindow pins */}
+      <Pins
+        chatsObj={chatsObj}
+        setChatObj={setChatObj}
+        setIs_show_pinned_message={setIs_show_pinned_message}
+      />
 
       {/* chat window body */}
       <div ref={ChatWindow_messages} className="ChatWindow-messages">
@@ -342,8 +322,8 @@ function ChatWindow() {
               className={`ChatWindow-messages__message ${
                 el.me == true ? "meSent" : ""
               }  ${
-                is_shot_inned_message == el.id
-                  ? "ChatWindow-pins__pin--show"
+                is_show_pinned_message == el.id
+                  ? "ChatWindow-pins__pin__show"
                   : ""
               }`}
             >
@@ -376,6 +356,7 @@ function ChatWindow() {
           );
         })}
       </div>
+
       {/* chat window textfield */}
       <div className="ChatWindow-textFeild">
         {isNotEmptyAnimated == true ? (

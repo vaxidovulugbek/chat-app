@@ -1,0 +1,75 @@
+/* here pins */
+
+.ChatWindow-pins {
+  width: 100%;
+  height: 35px;
+  top: 65px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+  background-color: rgba(87, 88, 86, 0.986);
+  z-index: 1;
+}
+
+.ChatWindow-pins:hover {
+  background-color: rgba(49, 45, 45, 0.842);
+}
+
+.ChatWindow-pins__pin {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.ChatWindow-pins__pin__icon {
+  font-size: 20px;
+}
+.ChatWindow-pins__remove-pin {
+  font-size: 30px;
+  color: rgb(132, 132, 132);
+}
+/* pin */
+.ChatWindow-pins__pin__show {
+  animation-name: backgroundColorPinedMessage;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+.ChatWindow-pins__pin__show .ChatWindow-messages__message--see {
+  animation-name: popUpPinedMessage;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes popUpPinedMessage {
+  0% {
+    transform: translate(0px);
+  }
+  25% {
+    transform: translate(30px);
+  }
+
+  70% {
+    transform: translate(0px);
+  }
+}
+
+@keyframes backgroundColorPinedMessage {
+  0% {
+    background-color: transparent;
+  }
+  25% {
+    background-color: rgba(117, 26, 196, 0.447);
+  }
+
+  70% {
+    background-color: transparent;
+  }
+}
