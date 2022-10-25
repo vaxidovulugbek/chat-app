@@ -194,20 +194,31 @@
 
 /* text field here */
 .ChatWindow-textFeild {
-  height: 30px;
   width: 100%;
+  height: 65px;
   position: absolute;
-  bottom: 30px;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   background-color: transparent;
+  background-color: #bebebedf;
+}
+
+.ChatWindow-textField-fileSticker-wrapper {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  gap: 10px;
 }
 
 .ChatWindow-textFeild-fileSend {
   width: 50px;
   height: 50px;
-  border-radius: 10px 0 0 10px;
+  border-radius: 30px;
   background-color: white;
   display: flex;
   align-items: center;
@@ -217,19 +228,17 @@
   cursor: pointer;
 }
 
-.ChatWindow-textFeild__input {
-  width: 70%;
-  height: 100%;
+.ChatWindow-textFeild-fileImoji {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  outline: none;
-  font-size: 18px;
-  line-height: 100%;
-  padding: 25px 15px;
-  background-color: white;
-  border-radius: 0 10px 0 0px;
+  font-size: 20px;
+  color: #3390ec;
+  cursor: pointer;
 }
 
 #send_messsage_icon {
