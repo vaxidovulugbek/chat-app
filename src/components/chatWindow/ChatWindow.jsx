@@ -1,8 +1,9 @@
 import "./ChatWindow.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaMicrophoneAlt } from "react-icons/fa";
 
 import { BsPinAngle, BsEmojiSmile } from "react-icons/bs";
-import { MdDone } from "react-icons/md";
+import { MdDone, MdOutlinePhotoCameraBack } from "react-icons/md";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { IoMdImages } from "react-icons/io";
 import { IoSearch, IoCheckmarkDoneOutline } from "react-icons/io5";
@@ -11,12 +12,13 @@ import { hover } from "@testing-library/user-event/dist/hover";
 import { useEffect, useRef, useState } from "react";
 // import Imoji from "./imojis/Imoji";
 import Pins from "./pins/Pins";
+import ChatForm from "./chatForm/ChatForm";
 // import Imoji from "./imojis/Imoji";
 
 function ChatWindow() {
   let textFieldFocus = useRef(null);
   let MessageRightClick = useRef(null);
-
+  let [isNotEmptyAnimated, setIsNotAnimated] = useState(false);
   let ChatWindow_messages = useRef(null);
   let [chatsObj, setChatObj] = useState({
     sent: [
@@ -259,16 +261,6 @@ function ChatWindow() {
   let send_message_icon = useRef(null);
 
   // state to check if all are  empty. it should be true.
-  let [isNotEmptyAnimated, setIsNotAnimated] = useState(false);
-
-  // input change event
-  let send_message = (e) => {
-    if (e.target.value.length > 0) {
-      setIsNotAnimated(true);
-    } else {
-      setIsNotAnimated(false);
-    }
-  };
 
   return (
     // chat window
@@ -359,22 +351,28 @@ function ChatWindow() {
 
       {/* chat window textfield */}
       <div className="ChatWindow-textFeild">
-        {isNotEmptyAnimated == true ? (
+        {/* {isNotEmptyAnimated == true ? (
           <label className="ChatWindow-textFeild-fileSend">
             <BsEmojiSmile />
           </label>
-        ) : (
-          <label htmlFor="sendFile" className="ChatWindow-textFeild-fileSend">
+          ) : (
+            <label htmlFor="sendFile" className="ChatWindow-textFeild-fileSend">
             <IoMdImages />
+            </label>
+          )} */}
+        <div className="ChatWindow-textField-fileSticker-wrapper">
+          <label className="ChatWindow-textFeild-fileImoji">
+            <BsEmojiSmile />
           </label>
-        )}
+          <label htmlFor="sendFile" className="ChatWindow-textFeild-fileSend">
+            <MdOutlinePhotoCameraBack />
+          </label>
+        </div>
         <input type="file" style={{ display: "none" }} id="sendFile" />
-        <input
-          onKeyUp={(event) => send_message(event)}
-          ref={textFieldFocus}
-          type="text"
-          placeholder="text here..."
-          className="ChatWindow-textFeild__input"
+        {/* <input ref={textFieldFocus} type="text" placeholder="text here..." /> */}
+        <ChatForm
+          setIsNotAnimated={setIsNotAnimated}
+          isNotEmptyAnimated={isNotEmptyAnimated}
         />
         <IconButton
           aria-label="delete"
@@ -386,74 +384,82 @@ function ChatWindow() {
             color: "#3390EC",
             background: "#fff",
             marginLeft: "8px",
+            transform: isNotEmptyAnimated == true ? "rotate(-50deg)" : "",
+            display: "flex",
+            alignItems: isNotEmptyAnimated == true ? "flex-end" : "center",
+            justifyContent: "center",
           }}
         >
-          <svg
-            id="send_messsage_icon"
-            width="25"
-            height="25"
-            viewBox="0 0 215 205"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            style={
-              isNotEmptyAnimated == true
-                ? { animationName: "fill" }
-                : { animationName: "" }
-            }
-          >
-            <g filter="url(#filter0_d_4_14)">
-              <path
-                style={
-                  isNotEmptyAnimated == true
-                    ? { animationName: "pop" }
-                    : { animationName: "" }
-                }
-                ref={send_message_icon_path}
-                className="send_messsage_icon_path"
-                d="M3.70945 61.6138L203.33 2.97726L113.754 190.563L88.2388 106.489C87.8845 105.322 87.0713 104.348 85.9856 103.791L3.70945 61.6138Z"
-                stroke="#3390ec"
-                strokeWidth="5"
-                shapeRendering="crispEdges"
-              />
-            </g>
-            <defs>
-              <filter
-                id="filter0_d_4_14"
-                x="0.366089"
-                y="0.178116"
-                width="213.904"
-                height="204.763"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
-                <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                <feColorMatrix
-                  in="SourceAlpha"
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  result="hardAlpha"
+          {isNotEmptyAnimated == true ? (
+            <svg
+              id="send_messsage_icon"
+              width="25"
+              height="25"
+              viewBox="0 0 215 205"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={
+                isNotEmptyAnimated == true
+                  ? { animationName: "fill" }
+                  : { animationName: "" }
+              }
+            >
+              <g filter="url(#filter0_d_4_14)">
+                <path
+                  style={
+                    isNotEmptyAnimated == true
+                      ? { animationName: "pop" }
+                      : { animationName: "" }
+                  }
+                  ref={send_message_icon_path}
+                  className="send_messsage_icon_path"
+                  d="M3.70945 61.6138L203.33 2.97726L113.754 190.563L88.2388 106.489C87.8845 105.322 87.0713 104.348 85.9856 103.791L3.70945 61.6138Z"
+                  stroke="#3390ec"
+                  strokeWidth="5"
+                  shapeRendering="crispEdges"
                 />
-                <feOffset dx="4" dy="7" />
-                <feGaussianBlur stdDeviation="2" />
-                <feComposite in2="hardAlpha" operator="out" />
-                <feColorMatrix
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                />
-                <feBlend
-                  mode="normal"
-                  in2="BackgroundImageFix"
-                  result="effect1_dropShadow_4_14"
-                />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="effect1_dropShadow_4_14"
-                  result="shape"
-                />
-              </filter>
-            </defs>
-          </svg>
+              </g>
+              <defs>
+                <filter
+                  id="filter0_d_4_14"
+                  x="0.366089"
+                  y="0.178116"
+                  width="213.904"
+                  height="204.763"
+                  filterUnits="userSpaceOnUse"
+                  colorInterpolationFilters="sRGB"
+                >
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix
+                    in="SourceAlpha"
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha"
+                  />
+                  <feOffset dx="4" dy="7" />
+                  <feGaussianBlur stdDeviation="2" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in2="BackgroundImageFix"
+                    result="effect1_dropShadow_4_14"
+                  />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="effect1_dropShadow_4_14"
+                    result="shape"
+                  />
+                </filter>
+              </defs>
+            </svg>
+          ) : (
+            <FaMicrophoneAlt />
+          )}
         </IconButton>
       </div>
     </div>
