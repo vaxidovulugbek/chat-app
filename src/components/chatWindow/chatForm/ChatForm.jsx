@@ -6,7 +6,7 @@ function ChatForm({ setIsNotAnimated, isNotAnimated }) {
   let inRef = useRef(null);
 
   let [text, setText] = useState({
-    html: "<p>type here</p>",
+    html: "",
   });
 
   let handleChange = (evt) => {
@@ -17,8 +17,6 @@ function ChatForm({ setIsNotAnimated, isNotAnimated }) {
       setIsNotAnimated(false);
     }
   };
-
-  const content = " hello world";
 
   sanitizeHtml(text.html, {
     allowedTags: ["u", "strong", "em", "a", "iframe", "strike", "p"],
@@ -58,6 +56,7 @@ function ChatForm({ setIsNotAnimated, isNotAnimated }) {
         html={text.html} // innerHTML of the editable div
         disabled={false} // use true to disable editing
         onChange={handleChange} // handle innerHTML change
+        placeholder="type here..."
         tagName="div" // Use a custom HTML tag (uses a div by default)
       />
     </div>

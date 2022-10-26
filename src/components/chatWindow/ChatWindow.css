@@ -2,7 +2,7 @@
   width: 70%;
   height: 100vh;
   position: relative;
-  border-left: 1px solid var(--chatWindowHeaderIconsColor);
+  /* border-left: 1px solid var(--chatWindowHeaderIconsColor); */
   overflow: hidden;
 }
 
@@ -203,7 +203,7 @@
   justify-content: center;
   gap: 5px;
   background-color: transparent;
-  background-color: #bebebedf;
+  background-color: #bebebeef;
 }
 
 .ChatWindow-textField-fileSticker-wrapper {
