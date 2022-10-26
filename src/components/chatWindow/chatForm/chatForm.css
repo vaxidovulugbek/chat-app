@@ -39,3 +39,8 @@
 .ChatWindow-textFeild__input::-webkit-scrollbar {
   display: none;
 }
+
+.ChatWindow-textFeild__input[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #555;
+}
